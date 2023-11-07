@@ -1,0 +1,7 @@
+.title{ @apply py-0 text-center w-full text-2xl my-5}
+
+.subtitle{ @apply py-0 text-center w-full text-lg my-5}
+
+.languagebox{ @apply flex gap-x-4 justify-center}
+
+.languages{ @apply p-4 py-2 rounded bg-orange-600 text-white cursor-pointer}

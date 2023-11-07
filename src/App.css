@@ -77,4 +77,4 @@
 
 .main { @apply bg-slate-50 h-screen}
 
-.innermain { @apply md:mx-16 px-4}
+.innermain { @apply md:mx-16}

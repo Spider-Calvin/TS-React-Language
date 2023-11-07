@@ -6,8 +6,8 @@ const Header = () => {
     <div className="flex">
       <div className='navbox'>
         <p>Learn Language</p>
-        <Link to={'/'}>Home</Link>
-        <Link to={'/login'}>Login</Link>
+        <Link className='link' to={'/'}>Home</Link>
+        <Link className='link' to={'/login'}>Login</Link>
       </div>
     </div>
   )
