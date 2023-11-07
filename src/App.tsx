@@ -1,14 +1,14 @@
 import './App.css'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Header from './components/Header'
+import Header from './components/Header/Header'
 import {lazy, Suspense} from 'react'
-import Loader from './components/Loader'
+import Loader from './components/Loader/Loader'
 
-const Home = lazy(()=>import('./components/Home'))
-const Learn = lazy(()=>import('./components/Learning'))
-const Result = lazy(()=>import('./components/Result'))
-const Quiz = lazy(()=>import('./components/Quiz'))
-const Login = lazy(()=>import('./components/Login'))
+const Home = lazy(()=>import('./components/Home/Home'))
+const Learn = lazy(()=>import('./components/Learning/Learning'))
+const Result = lazy(()=>import('./components/Result/Result'))
+const Quiz = lazy(()=>import('./components/Quiz/Quiz'))
+const Login = lazy(()=>import('./components/Login/Login'))
 
 function App() {
 
