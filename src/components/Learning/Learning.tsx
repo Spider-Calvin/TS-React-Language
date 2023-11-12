@@ -11,7 +11,7 @@ const Learning = () => {
   const params = useSearchParams()[0].get('language') as LangType
   const Navigate = useNavigate()
   const dispatch = useDispatch()
-  const { loading, error, words } = useSelector((state:{ root: rootstate})=>state.root)
+  const { loading, words } = useSelector((state:{ root: rootstate})=>state.root)
   const [audio, setAudio] = useState<string>('')
   const audioRef = useRef(null)
 
