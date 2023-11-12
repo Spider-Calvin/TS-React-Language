@@ -5,7 +5,7 @@ const Home = () => {
   const languages = [
     {
       name:'Japanese',
-      code:'js',
+      code:'ja',
     },
     {
       name:'Hindi',
@@ -23,7 +23,7 @@ const Home = () => {
   const navigate = useNavigate()
 
   const HandleLangugaeSelected = (language:string):void => {
-    navigate(`/learn?languages=${language}`)
+    navigate(`/learn?language=${language}`)
   };
 
   return (
