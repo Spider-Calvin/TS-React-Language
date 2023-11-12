@@ -56,3 +56,43 @@ export const translatewords = async (params:LangType):Promise<wordtype[]>=>{
         throw new Error('Some Error')
     }
 }
+
+export const countMatchingElement = (arr1:string[], arr2:string[])=>{
+    if(arr1.length != arr2.length) throw new Error('Array length mismatch')
+    let matchinCount = 0
+    for (let i = 0; i < arr1.length; i++) {
+        if(arr1[i]===arr2[i]) matchinCount++
+    }
+    return matchinCount
+}
+
+export const fetchAudio = async (text:string, language:LangType):Promise<string>=> {
+
+    const encodedParams = new URLSearchParams({
+        src:text,
+        r:'0',
+        c:'mp3',
+        f:'8khz_8bit_mono',
+        b64:"true"
+    });
+
+    if(language === 'es') encodedParams.set('hl','es-es')
+    else if(language === 'fr') encodedParams.set('hl','fr-fr')
+    else if(language === 'ja') encodedParams.set('hl','ja-jp')
+    else encodedParams.set('hl','hi-in')
+
+    const {data}:{data:string} = await axios.post(
+        'https://voicerss-text-to-speech.p.rapidapi.com/',
+        encodedParams,
+        {
+            params: {key: '5c1e91e56a1b4f07934004c8d8852d43'},
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'X-RapidAPI-Key': 'f41958fef6msh56b5b291745e984p102004jsn9ce3dedeb316',
+                'X-RapidAPI-Host': 'voicerss-text-to-speech.p.rapidapi.com'
+            },
+        }
+    )
+
+    return data
+}

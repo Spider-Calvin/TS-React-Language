@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react"
 import { useNavigate, useSearchParams } from "react-router-dom"
 import './result.css'
 import { useSelector, useDispatch } from "react-redux"
-import { saveResult } from "@/redux/slice"
+import { clearState } from "@/redux/slice"
+import { countMatchingElement } from "@/utils/features"
 
 const Result = () => {
-  const [count, setCount]= useState<number>(0)
-  const [ans, setAns]= useState<string>('')
   const { words, result } = useSelector((state:{ root: rootstate})=>state.root)
-  const correctAns = 2
+  const correctAns = countMatchingElement(result, words.map(word => word.meaning))
   const percentage = (correctAns / words.length) * 100
   const params = useSearchParams()[0].get('language') as LangType
   const languages = {
@@ -19,6 +17,11 @@ const Result = () => {
   }
   const dispatch = useDispatch()
   const Navigate = useNavigate()
+
+  const resetHandler = ()=>{
+    Navigate('/')
+    dispatch(clearState())
+  }
 
 
   return (
@@ -38,11 +41,11 @@ const Result = () => {
         </div>
         <div className="flex flex-col">
           <h6 className="font-semibold">Correct Answers</h6>
-          {words.map((word,i)=><a key={i}> - {word.meaning}</a> )}
+          {words.map((word,i)=><a key={i}>{word.meaning}</a> )}
         </div>
       </div>
       <div className="flex gap-x-4 items-center lg:w-6/12">
-        <a className={`smallbtn leading-7 self-end ${percentage >50 ? 'bg-green-600' :'bg-red-600'}`} onClick={()=>Navigate('/home')}>{percentage >50?'Pass':'Fail'}</a><a className={`smallbtn leading-7 self-end  ml-auto bg-orange-600 hover:bg-red-600`} onClick={()=>Navigate('/home')}>Learn Again</a>
+        <a className={`smallbtn leading-7 self-end ${percentage >50 ? 'bg-green-600' :'bg-red-600'}`}>{percentage >50?'Pass':'Fail'}</a><a className={`smallbtn leading-7 self-end  ml-auto bg-orange-600 hover:bg-red-600`} onClick={resetHandler}>Learn Again</a>
       </div>
     </div>
   )
