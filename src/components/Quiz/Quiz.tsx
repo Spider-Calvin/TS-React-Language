@@ -1,37 +1,45 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import './Quiz.css'
+import { useSelector, useDispatch } from "react-redux"
+import { saveResult } from "@/redux/slice"
 
 const Quiz = () => {
-  const [result, setReesult]= useState<string[]>([])
+  const [result, setResult]= useState<string[]>([])
   const [count, setCount]= useState<number>(0)
   const [ans, setAns]= useState<string>('')
+  const params = useSearchParams()[0].get('language') as LangType
+  const { words } = useSelector((state:{ root: rootstate})=>state.root)
+  const dispatch = useDispatch()
 
   const Navigate = useNavigate()
 
   const NextHandler = ():void =>{
-    setReesult((prev)=>[...prev, ans])
+    if(ans==='') return
+    setResult((prev)=>[...prev, ans])
     setCount(prev=>prev+1)
+    setAns('')
   }
-console.log(ans,'ans')
+
+  useEffect(()=>{
+    if(count+1>words.length)Navigate(`/result?language=${params}`)
+    dispatch(saveResult(result))
+  },[result])
+
   return (
     <div className="quizblock">
       <div className="flex gap-x-4 items-center">
-        <a className="smallbtn bg-orange-600 hover:bg-red-600" onClick={()=>Navigate('/')}>Back</a>
+        <a className="smallbtn bg-orange-600 hover:bg-red-600" onClick={()=>Navigate(`/learn?language=${params}`)}>Back</a>
         <p className="text-lg">Quizy</p>
       </div>
       <div className="textbox">
         <p>{count+1} )</p>
-        <p>Sample</p>
+        <p>{words[count]?.word}</p>
         <p>-</p>
         <div className="flex flex-col">
-          <a className="cursor-pointer" onClick={()=>{setAns('lol')}}><input type="radio" value={'lol'} checked={ans==='lol'} onChange={()=>{setAns('lol')}}/> lol</a>
-          <a className="cursor-pointer" onClick={()=>{setAns('lol1')}}><input type="radio" value={'lol1'} checked={ans==='lol1'} onChange={()=>{setAns('lol1')}}/> lol</a>
-          <a className="cursor-pointer" onClick={()=>{setAns('lol2')}}><input type="radio" value={'lol2'} checked={ans==='lol2'} onChange={()=>{setAns('lol2')}}/> lol</a>
-          <a className="cursor-pointer" onClick={()=>{setAns('lol3')}}><input type="radio" value={'lol3'} checked={ans==='lol3'} onChange={()=>{setAns('lol3')}}/> lol</a>
+          {words[count]?.options.map((option,i)=><a key={i} className="cursor-pointer" onClick={()=>{setAns(option)}}><input type="radio" value={option} checked={ans===option} onChange={()=>{setAns(option)}}/> {option}</a> )}
         </div>
-
-        <a className={`smallbtn leading-7 self-end  ml-auto  ${ans==='' ? 'bg-orange-400' : 'bg-orange-600 hover:bg-red-600'}`} onClick={count===7 ? ()=>Navigate('/quiz') : ()=>NextHandler()}>{count===7?'Test':'Next'}</a>
+        <a className={`smallbtn leading-7 self-end  ml-auto  ${ans==='' ? 'bg-orange-400' : 'bg-orange-600 hover:bg-red-600'}`} onClick={()=>NextHandler()}>{count===words.length-1 ?'Next':'Text'}</a>
       </div>
     </div>
   )

@@ -1,6 +1,50 @@
+import { useEffect, useState } from "react"
+import { useNavigate, useSearchParams } from "react-router-dom"
+import './result.css'
+import { useSelector, useDispatch } from "react-redux"
+import { saveResult } from "@/redux/slice"
+
 const Result = () => {
+  const [count, setCount]= useState<number>(0)
+  const [ans, setAns]= useState<string>('')
+  const { words, result } = useSelector((state:{ root: rootstate})=>state.root)
+  const correctAns = 2
+  const percentage = (correctAns / words.length) * 100
+  const params = useSearchParams()[0].get('language') as LangType
+  const languages = {
+    ja:'Japanese',
+    hi:'Hindi',
+    es:'Spanish',
+    fr:'French'
+  }
+  const dispatch = useDispatch()
+  const Navigate = useNavigate()
+
+
   return (
-    <div>Result</div>
+    <div className="resultblock">
+      <div className="flex gap-x-4 items-center">
+        <a className="smallbtn bg-orange-600 hover:bg-red-600" onClick={()=>Navigate(`/quiz?language=${params}`)}>Back</a>
+        <p className="text-lg">You have scored {correctAns} out of {words.length}</p>
+      </div>
+      <div className="textbox">
+        <div className="flex flex-col">
+          <h6 className="font-semibold">{languages[params]}</h6>
+          {words.map((word,i)=><a key={i}>{i+1} {word.word}</a> )}
+        </div>
+        <div className="flex flex-col">
+          <h6 className="font-semibold">Your Answers</h6>
+          {result.map((option,i)=><a key={i}>{option}</a> )}
+        </div>
+        <div className="flex flex-col">
+          <h6 className="font-semibold">Correct Answers</h6>
+          {words.map((word,i)=><a key={i}> - {word.meaning}</a> )}
+        </div>
+      </div>
+      <div className="flex gap-x-4 items-center lg:w-6/12">
+        <a className={`smallbtn leading-7 self-end ${percentage >50 ? 'bg-green-600' :'bg-red-600'}`} onClick={()=>Navigate('/home')}>{percentage >50?'Pass':'Fail'}</a><a className={`smallbtn leading-7 self-end  ml-auto bg-orange-600 hover:bg-red-600`} onClick={()=>Navigate('/home')}>Learn Again</a>
+      </div>
+    </div>
   )
 }
 
