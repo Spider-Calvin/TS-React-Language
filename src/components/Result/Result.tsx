@@ -1,5 +1,5 @@
 import { useNavigate, useSearchParams } from "react-router-dom"
-import './result.css'
+import './Result.css'
 import { useSelector, useDispatch } from "react-redux"
 import { clearState } from "@/redux/slice"
 import { countMatchingElement } from "@/utils/features"
