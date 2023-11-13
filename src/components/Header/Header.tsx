@@ -7,7 +7,7 @@ const Header = () => {
       <div className='navbox'>
         <p>Learn Language</p>
         <Link className='link' to={'/'}>Home</Link>
-        <Link className='link' to={'/login'}>Login</Link>
+        {/* <Link className='link' to={'/login'}>Login</Link> */}
       </div>
     </div>
   )
