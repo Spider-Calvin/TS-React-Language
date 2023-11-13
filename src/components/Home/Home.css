@@ -4,4 +4,4 @@
 
 .languagebox{ @apply flex gap-x-4 justify-center flex-wrap gap-y-4}
 
-.languages{ @apply p-4 py-2 rounded bg-orange-600 text-white cursor-pointer}
+.languages{ @apply p-4 py-2 rounded bg-indigo-500 text-white cursor-pointer}

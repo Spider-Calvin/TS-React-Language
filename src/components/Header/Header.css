@@ -1,3 +1,3 @@
-.navbox{ @apply flex flex-row p-4 text-white bg-orange-600 w-full gap-x-4 items-center h-12 md:px-16 drop-shadow-sm } 
+.navbox{ @apply flex flex-row p-4 text-white bg-indigo-500 w-full gap-x-4 items-center h-12 md:px-16 drop-shadow-sm } 
 
 .link{ @apply text-sm}

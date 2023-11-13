@@ -29,17 +29,17 @@ const Quiz = () => {
   return (
     <div className="quizblock">
       <div className="flex gap-x-4 items-center">
-        <a className="smallbtn bg-orange-600 hover:bg-red-600" onClick={()=>Navigate(`/learn?language=${params}`)}>Back</a>
+        <a className="smallbtn bg-indigo-500 hover:bg-red-600" onClick={()=>Navigate(`/learn?language=${params}`)}>Back</a>
         <p className="text-lg">Quizy</p>
       </div>
-      <div className="textbox">
+      <div className="quiztextbox">
         <p>{count+1} )</p>
         <p>{words[count]?.word}</p>
         <p>-</p>
         <div className="flex flex-col">
           {words[count]?.options.map((option,i)=><a key={i} className="cursor-pointer" onClick={()=>{setAns(option)}}><input type="radio" value={option} checked={ans===option} onChange={()=>{setAns(option)}}/> {option}</a> )}
         </div>
-        <a className={`smallbtn leading-7 self-end  ml-auto  ${ans==='' ? 'bg-orange-400' : 'bg-orange-600 hover:bg-red-600'}`} onClick={()=>NextHandler()}>{count===words.length-1 ?'Test':'Next'}</a>
+        <a className={`smallbtn leading-7 self-end  ml-auto  ${ans==='' ? 'bg-indigo-400' : 'bg-indigo-500 hover:bg-red-600'}`} onClick={()=>NextHandler()}>{count===words.length-1 ?'Test':'Next'}</a>
       </div>
     </div>
   )

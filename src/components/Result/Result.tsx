@@ -27,10 +27,10 @@ const Result = () => {
   return (
     <div className="resultblock">
       <div className="flex gap-x-4 items-center">
-        <a className="smallbtn bg-orange-600 hover:bg-red-600" onClick={()=>Navigate(`/quiz?language=${params}`)}>Back</a>
+        <a className="smallbtn bg-indigo-500 hover:bg-red-600" onClick={()=>Navigate(`/quiz?language=${params}`)}>Back</a>
         <p className="text-lg">You have scored {correctAns} out of {words.length}</p>
       </div>
-      <div className="textbox">
+      <div className="resulttextbox">
         <div className="flex flex-col">
           <h6 className="font-semibold">{languages[params]}</h6>
           {words.map((word,i)=><a key={i}>{i+1} {word.word}</a> )}
@@ -45,7 +45,7 @@ const Result = () => {
         </div>
       </div>
       <div className="flex gap-x-4 items-center lg:w-6/12">
-        <a className={`smallbtn leading-7 self-end ${percentage >50 ? 'bg-green-600' :'bg-red-600'}`}>{percentage >50?'Pass':'Fail'}</a><a className={`smallbtn leading-7 self-end  ml-auto bg-orange-600 hover:bg-red-600`} onClick={resetHandler}>Learn Again</a>
+        <a className={`smallbtn leading-7 self-end ${percentage >50 ? 'bg-green-600' :'bg-red-600'}`}>{percentage >50?'Pass':'Fail'}</a><a className={`smallbtn leading-7 self-end  ml-auto bg-indigo-500 hover:bg-red-600`} onClick={resetHandler}>Learn Again</a>
       </div>
     </div>
   )

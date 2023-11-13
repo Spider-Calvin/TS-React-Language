@@ -2,4 +2,4 @@
 
 .smallbtn{ @apply p-3 py-1 text-base rounded text-white cursor-pointer}
 
-.textbox{ @apply p-3 text-lg items-center rounded bg-slate-200 flex gap-x-4 my-4 flex-row lg:w-6/12}
+.resulttextbox{ @apply p-3 text-lg items-center rounded bg-slate-200 flex gap-x-4 my-4 flex-row lg:w-6/12}
