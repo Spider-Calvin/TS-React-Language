@@ -1,8 +1,8 @@
 .leaningblock{ @apply py-0 w-full text-2xl my-4}
 
-.LearnSmallbtn{ @apply p-3 py-1 text-base rounded bg-indigo-500 text-white cursor-pointer  hover:bg-red-600}
+.LearnSmallbtn{ @apply p-2 py-1 lg:p-3 lg:py-1 lg:text-base rounded bg-indigo-500 text-white cursor-pointer  hover:bg-indigo-700 text-sm}
 
-.textbox{ @apply p-3 text-lg items-center rounded bg-slate-200 flex gap-x-4 my-4 flex-row}
+.textbox{ @apply p-3 text-lg items-center rounded bg-slate-200 flex gap-x-2 my-4 flex-row}
 
 .speaker{ @apply hover:text-red-500 cursor-pointer}
 
@@ -11,3 +11,5 @@
         width:45vw;
     }
 }
+
+p{ @apply text-sm lg:text-lg }

@@ -1,5 +1,5 @@
 .resultblock{ @apply py-0 w-full text-2xl my-4}
 
-.smallbtn{ @apply p-3 py-1 text-base rounded text-white cursor-pointer}
+.smallbtn{ @apply p-2 py-1 lg:p-3 lg:py-1 lg:text-base rounded  text-white cursor-pointer text-sm}
 
-.resulttextbox{ @apply p-3 text-lg items-center rounded bg-slate-200 flex gap-x-4 my-4 flex-row lg:w-6/12}
+.resulttextbox{ @apply p-3 text-lg md:items-center rounded bg-slate-200 flex gap-x-4 gap-y-4 my-4 flex-col md:flex-row lg:w-6/12}

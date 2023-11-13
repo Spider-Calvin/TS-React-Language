@@ -50,7 +50,7 @@ const Learning = () => {
       {audio && <audio src={audio} autoPlay ref={audioRef} /> }
       <div className="flex gap-x-4 items-center">
         <a className="LearnSmallbtn" onClick={count===0 ? ()=>Navigate('/') : ()=>Previous()}>Back</a>
-        <p className="text-lg">Learning made Easy</p>
+        <p className="text-base ld:text-lg">Learning made Easy</p>
       </div>
       <div className="lg:flex lg:flex-row-reverse gap-x-4">
         <Lottie animationData={language} loop={true} className='languageanimation' />

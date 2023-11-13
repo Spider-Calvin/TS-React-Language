@@ -1,7 +1,7 @@
-.title{ @apply py-0 text-center w-full text-2xl my-5}
+.title{ @apply py-0 text-center w-full text-lg lg:text-2xl my-5}
 
-.subtitle{ @apply py-0 text-center w-full text-lg my-5}
+.subtitle{ @apply py-0 text-center w-full text-sm lg:text-lg my-5}
 
 .languagebox{ @apply flex gap-x-4 justify-center flex-wrap gap-y-4}
 
-.languages{ @apply p-4 py-2 rounded bg-indigo-500 text-white cursor-pointer}
+.languages{ @apply p-2 py-1 lg:p-4 lg:py-2 rounded bg-indigo-500 text-white cursor-pointer}
