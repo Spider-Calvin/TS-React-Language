@@ -39,7 +39,7 @@ const Quiz = () => {
         <div className="flex flex-col">
           {words[count]?.options.map((option,i)=><a key={i} className="cursor-pointer" onClick={()=>{setAns(option)}}><input type="radio" value={option} checked={ans===option} onChange={()=>{setAns(option)}}/> {option}</a> )}
         </div>
-        <a className={`smallbtn leading-7 self-end  ml-auto  ${ans==='' ? 'bg-orange-400' : 'bg-orange-600 hover:bg-red-600'}`} onClick={()=>NextHandler()}>{count===words.length-1 ?'Next':'Text'}</a>
+        <a className={`smallbtn leading-7 self-end  ml-auto  ${ans==='' ? 'bg-orange-400' : 'bg-orange-600 hover:bg-red-600'}`} onClick={()=>NextHandler()}>{count===words.length-1 ?'Test':'Next'}</a>
       </div>
     </div>
   )

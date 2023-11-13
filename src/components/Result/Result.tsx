@@ -37,11 +37,11 @@ const Result = () => {
         </div>
         <div className="flex flex-col">
           <h6 className="font-semibold">Your Answers</h6>
-          {result.map((option,i)=><a key={i}>{option}</a> )}
+          {result.map((option,i)=><a key={i} className={`${ option === words[i].meaning ? 'text-green-800' : 'text-red-800' }`}>{option}</a> )}
         </div>
         <div className="flex flex-col">
           <h6 className="font-semibold">Correct Answers</h6>
-          {words.map((word,i)=><a key={i}>{word.meaning}</a> )}
+          {words.map((word,i)=><a key={i} className='text-green-800'>{word.meaning}</a> )}
         </div>
       </div>
       <div className="flex gap-x-4 items-center lg:w-6/12">
